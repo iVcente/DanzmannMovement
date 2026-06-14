@@ -1,0 +1,43 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "DanzmannMovement",
+	"Description": "A modular movement plugin built on top of Mover. Provides reusable Components, Movement Modes, and modifiers along with orient-to-movement or strafe rotation behavior.",
+	"Category": "Danzmann",
+	"CreatedBy": "Vicente Danzmann",
+	"CreatedByURL": "https://danzmann.dev/",
+	"DocsURL": "https://github.com/iVcente/DanzmannMovement/blob/main/README.md",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": false,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"EnabledByDefault": true,
+	"Modules": [
+		{
+			"Name": "DanzmannMovement",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "DanzmannAbilities",
+			"Enabled": true
+		},
+		{
+			"Name": "DanzmannInput",
+			"Enabled": true
+		},
+		{
+			"Name": "ModularGameplay",
+			"Enabled": true
+		},
+		{
+			"Name": "Mover",
+			"Enabled": true
+		}
+	]
+}

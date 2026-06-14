@@ -1,13 +1,13 @@
-// Copyright (C) 2025 Vicente Danzmann. All Rights Reserved.
+// Copyright (C) 2026 Vicente Danzmann. All Rights Reserved.
 
 #pragma once
 
+#include "CoreMinimal.h"
 #include "Modules/ModuleManager.h"
 
-class FDanzmannPluginModule : public IModuleInterface
+class FDanzmannMovementModule : public IModuleInterface
 {
 	public:
-
 		/**
 		 * @see more info in ModuleInterface.h.
 		 */
