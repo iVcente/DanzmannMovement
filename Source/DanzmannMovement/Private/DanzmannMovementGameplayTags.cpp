@@ -4,6 +4,7 @@
 
 namespace Danzmann::GameplayTags
 {
+	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Status_Running, "Status.Running", "Actor is currently running.");
 	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Status_Sprinting, "Status.Sprinting", "Actor is currently sprinting.");
 	
 	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Movement_Orientation_OrientToControl, "Movement.Orientation.OrientToControl", "Pawn faces its Control Rotation (camera) and strafes. Published by UDanzmannMoverComponent; set via SetOrientationOverride(), do not grant directly through a Gameplay Effect.");
