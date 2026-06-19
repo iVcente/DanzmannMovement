@@ -4,7 +4,12 @@ A modular movement layer built on Epic's Mover framework. A Movement Profile des
 
 Built to sit beside the sibling Danzmann plugins: input bindings ride `DanzmannInput`'s apply pipeline, speed and orientation talk to `DanzmannAbilities` Attributes/Tags, and a Movement Profile is normally pushed onto the Component from `DanzmannExperiences` Pawn Data. When the owner has no Ability System Component the Component falls back to neutral defaults so non-GAS Pawns (and AI) still move.
 
-> Depends on the sibling Danzmann plugins `DanzmannAbilities` and `DanzmannInput`. For input to bind, the project must set `DefaultInputComponentClass=/Script/DanzmannInput.DanzmannEnhancedInputComponent` in `Config/DefaultInput.ini` and the active Input Profile must pair `InputAction.Move` and `InputAction.Jump` with `UInputAction`s. The GAS linkage expects a `UDanzmannAbilitySystemComponent` (on the Pawn or its Player State) carrying the `MovementSpeedMultiplier` Attribute.
+> Depends on the sibling Danzmann plugins `DanzmannAbilities` and `DanzmannInput`. For input to bind, the project must set `DefaultInputComponentClass` variable in `Config/DefaultInput.ini` as the following: 
+> ```ini
+> [/Script/Engine.InputSettings]
+> DefaultInputComponentClass=/Script/DanzmannInput.DanzmannEnhancedInputComponent
+> ```
+> Also, the active Input Profile must pair `InputAction.Move` and `InputAction.Jump` with `UInputAction`s. The GAS linkage expects a `UDanzmannAbilitySystemComponent` (on the Pawn or its Player State) carrying the `MovementSpeedMultiplier` Attribute.
 
 ## Concepts
 
