@@ -10,9 +10,24 @@
  */
 namespace Danzmann::GameplayTags
 {
-	DANZMANNMOVEMENT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Status_Running);
-	DANZMANNMOVEMENT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Status_Sprinting);
-	
+	/**
+	 * Gait -- the manner/speed of locomotion. This is an exclusive axis: exactly one Status.Gait.*
+	 * Tag is present on the owner's Ability System Component at any time, so any system can query the
+	 * Status.Gait parent to read the current gait in one shot.
+	 *
+	 * The baseline Status.Gait.Walking is supplied by an always-applied infinite GE_Walk. Higher gaits
+	 * (Run, Sprint) are granted by their own Gameplay Effects, each of which uses Ongoing Tag
+	 * Requirements (Ignore Tags) to inhibit the lower gaits while active -- yielding the precedence
+	 * Sprint > Run > Walk. No second writer and no manual re-apply: when a higher gait's tag drops, the
+	 * inhibited Gameplay Effect un-inhibits on its own and its gait tag returns.
+	 *
+	 * Note this is distinct from the Movement.Mode.* axis below (grounded/airborne locomotion mode);
+	 * Movement.Mode.Walking is NOT a gait.
+	 */
+	DANZMANNMOVEMENT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Status_Gait_Walking);
+	DANZMANNMOVEMENT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Status_Gait_Running);
+	DANZMANNMOVEMENT_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Status_Gait_Sprinting);
+
 	/**
 	 * Orientation states. UDanzmannMoverComponent is the SOLE writer of these tags and keeps exactly one of them
 	 * present on the owner's Ability System Component at a time, mirroring the Pawn's effective orientation (read-only

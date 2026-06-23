@@ -4,9 +4,10 @@
 
 namespace Danzmann::GameplayTags
 {
-	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Status_Running, "Status.Running", "Actor is currently running.");
-	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Status_Sprinting, "Status.Sprinting", "Actor is currently sprinting.");
-	
+	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Status_Gait_Walking, "Status.Gait.Walking", "Actor's current gait is walking. Baseline gait, supplied by the always-applied GE_Walk and inhibited while a higher gait is active. Exactly one Status.Gait.* tag is present at a time.");
+	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Status_Gait_Running, "Status.Gait.Running", "Actor's current gait is running. Granted by GE_Run; inhibits Walking and is itself inhibited by Sprinting via Ongoing Tag Requirements.");
+	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Status_Gait_Sprinting, "Status.Gait.Sprinting", "Actor's current gait is sprinting. Top of the gait precedence (Sprint > Run > Walk); inhibits the lower gaits and is inhibited by none.");
+
 	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Movement_Orientation_OrientToControl, "Movement.Orientation.OrientToControl", "Pawn faces its Control Rotation (camera) and strafes. Published by UDanzmannMoverComponent; set via SetOrientationOverride(), do not grant directly through a Gameplay Effect.");
 	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Movement_Orientation_OrientToMovement, "Movement.Orientation.OrientToMovement", "Pawn faces its movement direction. Published by UDanzmannMoverComponent; set via SetOrientationOverride(), do not grant directly through a Gameplay Effect.");
 
