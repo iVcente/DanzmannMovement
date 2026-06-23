@@ -588,6 +588,12 @@ void UDanzmannMoverComponent::BuildInputCmd(float DeltaMs, FMoverInputCmdContext
 
 #pragma region OrientationMode
 
+	EDanzmannOrientationMode UDanzmannMoverComponent::GetOrientationMode() const
+	{
+		// OrientToControl is the effective default whenever the cached Tag isn't explicitly OrientToMovement
+		return CurrentOrientationMode == Danzmann::GameplayTags::Movement_Orientation_OrientToMovement ? EDanzmannOrientationMode::OrientToMovement : EDanzmannOrientationMode::OrientToControl;
+	}
+
 	void UDanzmannMoverComponent::SetOrientationModeOverride(const FGameplayTag NewOrientationModeOverride)
 	{
 		OrientationModeOverride = NewOrientationModeOverride;

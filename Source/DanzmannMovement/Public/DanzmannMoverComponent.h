@@ -5,6 +5,7 @@
 #include "AbilitySystemComponent.h"
 #include "CoreMinimal.h"
 #include "DanzmannInputBinderInterface.h"
+#include "DanzmannOrientationMode.h"
 #include "DefaultMovementSet/CharacterMoverComponent.h"
 #include "GameplayTagContainer.h"
 
@@ -455,15 +456,11 @@ class DANZMANNMOVEMENT_API UDanzmannMoverComponent : public UCharacterMoverCompo
 		
 		public:
 			/**
-			 * Get the effective Orientation Mode Gameplay Tag the Pawn is currently orienting by -- either
-			 * Movement.Orientation.OrientToControl or Movement.Orientation.OrientToMovement. This is the same value
-			 * published as the single Movement.Orientation.* loose Tag on the owner's Ability System Component.
+			 * Get the effective Orientation Mode the Pawn is currently orienting by -- the enum mirror of the
+			 * single Movement.Orientation.* loose Tag published on the owner's Ability System Component.
 			 */
 			UFUNCTION(BlueprintPure, Category = "Danzmann|Movement", Meta = (BlueprintThreadSafe))
-			FGameplayTag GetOrientationMode() const
-			{
-				return CurrentOrientationMode;
-			}
+			EDanzmannOrientationMode GetOrientationMode() const;
 
 			/**
 			 * Override the Orientation Mode, replacing any current override. Takes effect from next frame and is mirrored as

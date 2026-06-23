@@ -5,28 +5,24 @@
 #include "AbilitySystemComponent.h"
 #include "DanzmannMovementGameplayTags.h"
 
-FGameplayTag UDanzmannMovementStatics::GetCurrentGait(const UAbilitySystemComponent* AbilitySystemComponent)
+EDanzmannGait UDanzmannMovementStatics::GetCurrentGait(const UAbilitySystemComponent* AbilitySystemComponent)
 {
 	if (!IsValid(AbilitySystemComponent))
 	{
-		return FGameplayTag();
+		return EDanzmannGait::Walk;
 	}
 
 	// Highest precedence first so the result stays deterministic if more than one gait Tag is momentarily present
 	if (AbilitySystemComponent->HasMatchingGameplayTag(Danzmann::GameplayTags::Status_Gait_Sprinting))
 	{
-		return Danzmann::GameplayTags::Status_Gait_Sprinting;
+		return EDanzmannGait::Sprint;
 	}
 
 	if (AbilitySystemComponent->HasMatchingGameplayTag(Danzmann::GameplayTags::Status_Gait_Running))
 	{
-		return Danzmann::GameplayTags::Status_Gait_Running;
+		return EDanzmannGait::Run;
 	}
 
-	if (AbilitySystemComponent->HasMatchingGameplayTag(Danzmann::GameplayTags::Status_Gait_Walking))
-	{
-		return Danzmann::GameplayTags::Status_Gait_Walking;
-	}
-
-	return FGameplayTag();
+	// Status.Gait.Walking is the always-present baseline; treat "no gait Tag" as Walk too
+	return EDanzmannGait::Walk;
 }
